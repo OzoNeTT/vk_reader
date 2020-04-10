@@ -4,7 +4,7 @@ This program is designed to automatically read VK messages using the API.
 
 Special thanks to `Toliak` for helping 
 
-## Instalation 
+## Installation
 
 ### Classic
 
