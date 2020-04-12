@@ -2,7 +2,7 @@
 
 This program is designed to automatically read VK messages using the API.
 
-Author [Toliak](https://github.com/Toliak)  
+Author [**Toliak**](https://github.com/Toliak)  
 
 ## Installation
 
