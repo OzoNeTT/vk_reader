@@ -1,7 +1,7 @@
 .idea
 __pycache__
-reader/local.py
+local.py
 Pipfile.lock
 data
 .ipynb_checkpoints
-
+venv

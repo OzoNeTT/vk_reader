@@ -49,6 +49,8 @@ class messages(object):
         for i in params:
             data["param_" + i] = params[i]
         answer = this.session.post('https://vk.com/dev', data=data)
+        if answer.status_code != 200:
+            raise RuntimeError(f'server response with {answer.status_code}')
         return json.loads(re.findall("({.+)", answer.text)[-1])
 
     def _get_hash(this, method):

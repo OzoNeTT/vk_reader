@@ -1,6 +1,6 @@
 FROM python:3.7-slim-buster
 
-COPY Pipfile /tmp/Pipfile
+COPY requirements.txt /tmp/requirements.txt
 
 ENV PACKAGES="gcc \
               build-essential \
@@ -9,12 +9,11 @@ ENV PACKAGES="gcc \
 RUN set -ex && \
     apt-get update -y && \
     apt-get install -y $PACKAGES && \
-    pip install -U pip \
-                   pipenv && \
-    cd /tmp/ && \
-    pipenv install --deploy --system --skip-lock && \
+    pip install -r /tmp/requirements.txt && \
     apt-get remove -y $PACKAGES
 
 WORKDIR /opt/builder
 
 COPY . /opt/builder
+
+CMD ["python", "reader/reader.py"]
