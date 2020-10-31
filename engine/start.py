@@ -36,11 +36,14 @@ def endless_reader(api):
     e = None
     while True:
         try:
-            for id in VK_IGNORE_LIST:
-                resp = api.method("messages.markAsRead", peer_id=id)
+            for i in VK_IGNORE_LIST:
+                resp = api.method("messages.markAsRead", peer_id=i)
+                resp_code = json.loads(resp["payload"][1]).get("response", "")
+                if resp_code != 1:
+                    raise RuntimeError(f'server response with "{resp}"')
                 write_to_file(resp)
                 catch_error = 0
-        except:
+        except Exception as e:
             catch_error += 1
             pass
         if catch_error > 3:
